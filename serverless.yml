@@ -1,0 +1,14 @@
+service: expressInAWSDemo #Name of your App
+
+provider:
+ name: aws
+ runtime: nodejs16.x # Node JS version
+ stage: dev
+ region: ap-south-1 # AWS region
+
+functions:
+ api:
+   handler: lambda.handler
+   events:
+     - http: ANY {proxy+}
+     - http: ANY /
